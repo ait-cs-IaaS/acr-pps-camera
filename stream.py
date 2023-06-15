@@ -35,13 +35,16 @@ def generate_frames():
                 video_capture.set(cv2.CAP_PROP_POS_FRAMES, 0)
                 continue
         
-             # Add timestamp to the frame
+            # Convert frame to grayscale
+            gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            
+            # Add timestamp to the frame
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            cv2.putText(frame, timestamp, (10, 30), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
+            cv2.putText(gray_frame, timestamp, (10, 30), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 0),2)
 
             if not camera_freeze:
                 # Convert frame to JPEG image
-                ret, jpeg = cv2.imencode('.jpg', frame)
+                ret, jpeg = cv2.imencode('.jpg', gray_frame)
                 frame_bytes = jpeg.tobytes()
                 last_frame = frame_bytes
             
@@ -51,9 +54,9 @@ def generate_frames():
             # This determines how long the opening video plays for
             if open_sesame:
                 counter = counter + 1
-                if counter >= 50:
+                if counter >= 500:
                     switch_feed()
-            time.sleep(0.05)
+            # time.sleep(0.05)
 
 @app.route('/switch')
 def switch_feed():
