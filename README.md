@@ -114,7 +114,7 @@ Once the server is up and running, you can access the main HTML page on `http://
 All access attempts are logged in a text file named `access_logs.txt` under the `logs` folder.
 - **Log Structure**: `timestamp - ID: <employee_id> - Name: <employee_name> - Status: <status>`
 - **Log Example**: `2023-08-01 12:45:23 - ID: 1 - Name: John Doe - Status: Access Granted`
-The log file provides a comprehensive history of all employee activities, including when they logged in or out, which helps maintain security and track any unusual behavior.
+The log file provides a comprehensive history of all employee activities, including when they logged in or out.
 
 ## Video Configuration
 - **Default Video**: The default video is set to `vid/door.mp4`. This plays when no specific access is granted.
