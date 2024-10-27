@@ -27,8 +27,10 @@ To run this application, you need to have Python installed along with some depen
 ### Setup
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/flask-video-access-control.git
-   cd flask-video-access-control
+   git clone https://github.com/ait-cs-IaaS/pps-camera.git
+   cd pps-camera
+   git checkout dev2
+
    ```
 
 2. **Install Dependencies**:
@@ -50,7 +52,7 @@ To run this application, you need to have Python installed along with some depen
    ```
 
 ## Configuration
-The application requires a configuration JSON file (`test.json`) to manage employees and their details.
+The application requires a configuration JSON file (`config.json`) to manage employees and their details.
 
 ### Employee Configuration (test.json)
 The configuration file should contain the list of employees with their unique details. An example structure is:
@@ -83,7 +85,7 @@ The configuration file should contain the list of employees with their unique de
 Once the server is up and running, you can access the main HTML page on `http://127.0.0.1:5001/`. Here, you will see the default video feed being streamed.
 
 ### Video Switching
-- **Manual Switch**: You can manually switch the feed by accessing `/manual_switch/<name>` where `<name>` matches the name of an employee in `test.json`.
+- **Manual Switch**: You can manually switch the feed by accessing `/manual_switch/<name>` where `<name>` matches the first name of an employee in `config.json`.
 - **Logout Video**: Use `/manual_switch_out/<name>` to play an employee's logout video.
 
 ### Random Video Playback
