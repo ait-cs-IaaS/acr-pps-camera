@@ -77,3 +77,11 @@
 2024-10-27 01:47:27 - ID: EMP12345 - Name: Ghaith Doe - Status: Access Granted
 2024-10-27 01:47:57 - ID: EMP12345 - Name: Ghaith Doe - Status: Access Granted
 2024-10-27 01:48:03 - ID: EMP39486 - Name: Irene White - Status: Access Granted
+2024-10-27 02:09:20 - ID: EMP39486 - Name: Irene White - Status: Access Granted
+2024-10-27 02:11:19 - ID: EMP39486 - Name: Irene White - Status: Log Out
+2024-10-27 02:11:37 - ID: EMP39486 - Name: Irene White - Status: Access Granted
+2024-10-27 02:19:47 - ID: EMP56552 - Name: Tobi Gazi - Status: Access Granted
+2024-10-27 02:20:24 - ID: EMP56552 - Name: Tobi Gazi - Status: Access Granted
+2024-10-27 02:20:39 - ID: EMP56552 - Name: Tobi Gazi - Status: Log Out
+2024-10-27 02:29:06 - ID: EMP56552 - Name: Tobi Gazi - Status: Log Out
+2024-10-27 02:29:58 - ID: EMP56552 - Name: Tobi Gazi - Status: Access Granted - Log In

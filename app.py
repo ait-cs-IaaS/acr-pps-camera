@@ -20,7 +20,7 @@ socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet', max_ht
 
 
 def load_employee_config():
-    config_path = os.path.join(os.path.dirname(__file__), 'test.json')
+    config_path = os.path.join(os.path.dirname(__file__), 'config.json')
     try:
         with open(config_path, 'r') as config_file:
             config_data = json.load(config_file)
@@ -62,11 +62,11 @@ mp4_files_out = [
     "vid_out/breach.mp4",
     "vid_out/ghaith.mp4",
     "vid_out/gregor.mp4",
-    "vid_out/Irene.mp4",
+    "vid_out/irene.mp4",
     "vid_out/lenhard.mp4",
     "vid_out/mario.mp4",
     "vid_out/martin.mp4",
-    "vid_out/Michael.mp4",
+    "vid_out/michael.mp4",
     "vid_out/oliver.mp4",
     "vid_out/peter.mp4",
     "vid_out/petra.mp4",
@@ -175,7 +175,7 @@ def manual_switch_by_name(name):
             return handle_manual_switch(
                 employee["id"],
                 employee["picture"],
-                "Access Granted",
+                "Access Granted - Log In",
                 video_path
             )
         else:
@@ -195,10 +195,10 @@ def manual_switch_by_name_out(name):
         video_path = find_video_by_name_out(employee['video'])
 
         if video_path:
-            return handle_manual_switch(
+            return handle_manual_switch_out(
                 employee["id"],
                 employee["picture"],
-                "Access Granted",
+                "Log Out",
                 video_path
             )
         else:
@@ -272,6 +272,56 @@ def handle_manual_switch(employee_id, image_filename, message, video_path,):
     return redirect('/')
 
 
+def handle_manual_switch_out(employee_id, image_filename, message, video_path,):
+    global tmp_vid
+
+    # Fetch employee name from the loaded employee list
+    employee = next((emp for emp in employees if emp["id"] == employee_id), None)
+    employee_name = employee["name"] if employee else "Unknown"
+
+    # Step 1: Emit access logs
+    access_log = {
+        'timestamp': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        'employee_id': employee_id,
+        'employee_name': employee_name,
+        'status': message if employee_name != "Unknown" else None
+    }
+    socketio.emit('access_log', access_log)
+    print(f"Access log emitted for {employee_id}")
+    
+    # Step 2: Call perform_switch with the provided video path
+    # Pass the video path to ensure the desired video is used
+    result = perform_switch(video_path=video_path)
+    print(f"Switch feed called with video path: {video_path}, result: {result}")
+    # Step 2: Write the log to a file in a fixed folder
+    log_folder = 'logs'
+    
+    # Ensure the log folder exists
+    os.makedirs(log_folder, exist_ok=True)
+    
+    # Define the log file path
+    log_file_path = os.path.join(log_folder, 'access_logs.txt')
+
+    # Format the log entry as a string
+    log_entry = f"{access_log['timestamp']} - ID: {access_log['employee_id']} - Name: {access_log['employee_name']} - Status: {access_log['status']}\n"
+
+    # Append the log entry to the file
+    with open(log_file_path, 'a') as log_file:
+        log_file.write(log_entry)
+
+    print(f"Access log written to {log_file_path}")
+    # Step 3: Emit facial recognition log after 1 second if an image is provided
+    if image_filename:
+        socketio.start_background_task(manual_switch_sequence, image_filename, access_log["status"])
+        print(f"Started background task with image: {image_filename}")
+    else:
+        socketio.start_background_task(manual_switch_sequence, None, access_log["status"])
+        print("Started background task without image")
+
+    return redirect('/')
+
+
+
 @app.route("/switch")
 def switch_feed():
     return perform_switch()
@@ -337,7 +387,7 @@ def reset_to_default_feed():
 def remove_facial_image_after_delay():
     # Wait for 5 seconds before removing the facial image
     socketio.sleep(10)
-    # socketio.emit('facial_hello', {'image_url': None, 'message': ''})
+    socketio.emit('facial_hello', {'image_url': None, 'message': ''})
 
 def play_videos_randomly():
     global mp4_files_out, breach_mode
