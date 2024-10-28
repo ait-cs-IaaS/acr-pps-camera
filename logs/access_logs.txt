@@ -85,3 +85,16 @@
 2024-10-27 02:20:39 - ID: EMP56552 - Name: Tobi Gazi - Status: Log Out
 2024-10-27 02:29:06 - ID: EMP56552 - Name: Tobi Gazi - Status: Log Out
 2024-10-27 02:29:58 - ID: EMP56552 - Name: Tobi Gazi - Status: Access Granted - Log In
+2024-10-28 09:48:54 - ID: EMP56552 - Name: Tobi Gazi - Status: Access Granted - Log In
+2024-10-28 09:49:45 - ID: EMP56552 - Name: Tobi Gazi - Status: Access Granted - Log In
+2024-10-28 09:51:09 - ID: EMP56552 - Name: Tobi Gazi - Status: Access Granted - Log In
+2024-10-28 09:51:42 - ID: EMP20459 - Name: Martin Green - Status: Access Granted - Log In
+2024-10-28 09:51:58 - ID: EMP20459 - Name: Martin Green - Status: Access Granted - Log In
+2024-10-28 09:52:16 - ID: EMP97463 - Name: Anna Purple - Status: Access Granted - Log In
+2024-10-28 09:52:56 - ID: EMP39485 - Name: Oliver Jackson - Status: Access Granted - Log In
+2024-10-28 09:55:23 - ID: EMP10210 - Name: Gregor Smith - Status: Access Granted - Log In
+2024-10-28 09:55:41 - ID: EMP39485 - Name: Oliver Jackson - Status: Access Granted - Log In
+2024-10-28 10:55:28 - ID: EMP39485 - Name: Oliver Jackson - Status: Access Granted - Log In
+2024-10-28 10:56:06 - ID: EMP39485 - Name: Oliver Jackson - Status: Access Granted - Log In
+2024-10-28 10:56:29 - ID: EMP10210 - Name: Gregor Smith - Status: Access Granted - Log In
+2024-10-28 10:56:52 - ID: EMP39485 - Name: Oliver Jackson - Status: Access Granted - Log In
