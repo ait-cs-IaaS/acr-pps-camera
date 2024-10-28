@@ -32,6 +32,10 @@ def generate_frames():
         else:
             text_message = "pending ..."
 
+        # Get the video's native frame rate
+        fps = cap.get(cv2.CAP_PROP_FPS) or 30  
+        frame_delay = 1 / fps
+
         while True:
 
             success, frame = cap.read()
@@ -53,7 +57,7 @@ def generate_frames():
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
             
-            time.sleep(0.02)
+            time.sleep(frame_delay)
 
         cap.release()
 
@@ -84,11 +88,11 @@ def change_feed(direction, video_id):
         # Get access log info 
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         employee_name = name_mapping.get(video_id, "Unknown")
-        state = f"{ 'entering' if direction == 'in' else 'leaving' }"
+        state = f"{ ('entering' if direction == 'in' else 'leaving').upper() }"
 
         hash_object = hashlib.sha256(employee_name.encode())
         hash_hex = hash_object.hexdigest()
-        employee_id = (hash_hex[:8]).upper()
+        employee_id = f"{ (hash_hex[:8]).upper() if employee_name != 'Unknown' else '---' }"
 
         # Write to logfile
         with open("access.log", "a") as file:
