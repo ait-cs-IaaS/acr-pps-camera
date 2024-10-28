@@ -120,6 +120,4 @@ The log file provides a comprehensive history of all employee activities, includ
 - **Default Video**: The default video is set to `vid/door.mp4`. This plays when no specific access is granted.
 - **Employee Videos**: Videos for employees are stored in the `vid/` and `vid_out/` directories for access and logout, respectively.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
