@@ -14,8 +14,8 @@ eventlet.monkey_patch()
 
 # Initialize Flask app
 app = Flask(__name__)
-app.config['SERVER_NAME'] = '127.0.0.1:5001'
-app.config['PREFERRED_URL_SCHEME'] = 'http'
+# app.config['SERVER_NAME'] = '127.0.0.1:5001'
+# app.config['PREFERRED_URL_SCHEME'] = 'http'
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet', max_http_buffer_size=1000000)
 
 
@@ -34,44 +34,44 @@ employees = load_employee_config()
 #vars
 
 mp4_files = [
-    "vid/door.mp4",
-    "vid/max.mp4",
-    "vid/klaus.mp4",
-    "vid/stefania.mp4",
-    "vid/breach.mp4",
-    "vid/ghaith.mp4",
-    "vid/gregor.mp4",
-    "vid/irene.mp4",
-    "vid/lenhard.mp4",
-    "vid/mario.mp4",
-    "vid/martin.mp4",
-    "vid/michael.mp4",
-    "vid/oliver.mp4",
-    "vid/peter.mp4",
-    "vid/petra.mp4",
-    "vid/anna.mp4",
-    "vid/tobi.mp4"
+    "/opt/surveillance/vid/door.mp4",
+    "/opt/surveillance/vid/max.mp4",
+    "/opt/surveillance/vid/klaus.mp4",
+    "/opt/surveillance/vid/stefania.mp4",
+    "/opt/surveillance/vid/breach.mp4",
+    "/opt/surveillance/vid/ghaith.mp4",
+    "/opt/surveillance/vid/gregor.mp4",
+    "/opt/surveillance/vid/irene.mp4",
+    "/opt/surveillance/vid/lenhard.mp4",
+    "/opt/surveillance/vid/mario.mp4",
+    "/opt/surveillance/vid/martin.mp4",
+    "/opt/surveillance/vid/michael.mp4",
+    "/opt/surveillance/vid/oliver.mp4",
+    "/opt/surveillance/vid/peter.mp4",
+    "/opt/surveillance/vid/petra.mp4",
+    "/opt/surveillance/vid/anna.mp4",
+    "/opt/surveillance/vid/tobi.mp4"
 ]
 
 mp4_files_out = [
     
-    "vid_out/door.mp4",
-    "vid_out/max.mp4",
-    "vid_out/klaus.mp4",
-    "vid_out/stefania.mp4",
-    "vid_out/breach.mp4",
-    "vid_out/ghaith.mp4",
-    "vid_out/gregor.mp4",
-    "vid_out/irene.mp4",
-    "vid_out/lenhard.mp4",
-    "vid_out/mario.mp4",
-    "vid_out/martin.mp4",
-    "vid_out/michael.mp4",
-    "vid_out/oliver.mp4",
-    "vid_out/peter.mp4",
-    "vid_out/petra.mp4",
-    "vid_out/anna.mp4",
-    "vid_out/tobi.mp4"
+    "/opt/surveillance/vid_out/door.mp4",
+    "/opt/surveillance/vid_out/max.mp4",
+    "/opt/surveillance/vid_out/klaus.mp4",
+    "/opt/surveillance/vid_out/stefania.mp4",
+    "/opt/surveillance/vid_out/breach.mp4",
+    "/opt/surveillance/vid_out/ghaith.mp4",
+    "/opt/surveillance/vid_out/gregor.mp4",
+    "/opt/surveillance/vid_out/irene.mp4",
+    "/opt/surveillance/vid_out/lenhard.mp4",
+    "/opt/surveillance/vid_out/mario.mp4",
+    "/opt/surveillance/vid_out/martin.mp4",
+    "/opt/surveillance/vid_out/michael.mp4",
+    "/opt/surveillance/vid_out/oliver.mp4",
+    "/opt/surveillance/vid_out/peter.mp4",
+    "/opt/surveillance/vid_out/petra.mp4",
+    "/opt/surveillance/vid_out/anna.mp4",
+    "/opt/surveillance/vid_out/tobi.mp4"
 ]
 # vid_out_folder = 'vid_out'
 # mp4_files_out = [os.path.join(vid_out_folder, file) 
@@ -85,7 +85,7 @@ counter = 0
 camera_freeze = False
 last_frame = None
 breach_mode = False
-default_vid = "vid/door.mp4"
+default_vid = "/opt/surveillance/vid/door.mp4"
 tmp_vid = None
 lock = threading.Lock()
 delay_seconds = 10
