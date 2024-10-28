@@ -14,17 +14,11 @@ instance/
 .coverage
 htmlcov/
 
+.vscode
+
 # Distribution and build directories
 dist/
 build/
 *.egg-info/
 
-# Ignore specific Python files related to 'stream'
-stream.py
-stream1.py
-stream2.py
-stream3.py
-stream4.py
-stream5.py
-stream6.py
-
+access.log
