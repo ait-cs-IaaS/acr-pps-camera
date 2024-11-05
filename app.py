@@ -95,7 +95,7 @@ def change_feed(direction, video_id):
         employee_id = f"{ (hash_hex[:8]).upper() if employee_name != 'Unknown' else '---' }"
 
         # Write to logfile
-        with open("access.log", "a") as file:
+        with open("/var/log/surveillance.log", "a") as file:
             file.write(f"{ timestamp } [ACCESS-INFO] - Employee { employee_id }, { employee_name } { state }\n")
 
         # Choose image
